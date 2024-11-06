@@ -1,3 +1,6 @@
+-- DB Namen bei Bedarf anpassen
+USE MitarbeiterDB 
+
 SELECT 
     m.Vorname + ' ' + m.Nachname AS MitarbeiterName,
     dql.Problem,

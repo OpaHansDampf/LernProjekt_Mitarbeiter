@@ -1,3 +1,6 @@
+-- DB Namen bei Bedarf anpassen
+USE MitarbeiterDB 
+
 SELECT 
     p.Projekt_Name,
     p.Projekt_Nummer,

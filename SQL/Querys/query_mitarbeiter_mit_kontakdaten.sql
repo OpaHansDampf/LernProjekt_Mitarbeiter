@@ -1,7 +1,11 @@
+-- DB Namen bei Bedarf anpassen
+USE MitarbeiterDB 
+
 SELECT 
     m.Vorname + ' ' + m.Nachname AS MitarbeiterName,
     a.Strasse + ' ' + a.HausNr AS Adresse,
-    o.PLZ + ' ' + o.Stadt AS Ort,
+    o.PLZ AS PLZ,
+    o.Stadt AS Ort,
     p.Phone_Number,
     pt.Type_Lang AS TelefonTyp
 FROM Mitarbeiter m
