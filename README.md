@@ -55,17 +55,20 @@ Das Projekt entstand als Lernprojekt zur Demonstration des vollständigen Entwic
 LernProjekt_Mitarbeiter/
 ├── 📝 README.md
 ├── 📂 Dokumentation/
-│   ├── 📄 ER-Modell.pdf
-│   └── 📄 UML-Diagramm.pdf
+│   ├── 📄 Excel_Entwurf.xlsx (COMMING SOON)
+│   ├── 📄 ER-Modell.pdf (COMMING SOON)
+│   └── 📄 UML-Diagramm.png (NOT FINAL)
 ├── 📂 SQL/
 │   ├── 📂 Create/
 │   │   ├── 📜 create_db_advanced.sql
 │   │   └── 📜 create_db_basics.sql
 │   ├── 📂 Insert/
-│   │   ├── 📜 insert_StammDaten.sql
-│   │   ├── 📜 insert_multi_Mitarbeiter_bsp.sql
-│   │   └── 📜 insert_single_Mitarbeiter_bsp.sql
+│   │   ├── 📜 insert_stammdaten.sql
+│   │   ├── 📜 insert_multi_mitarbeiter.sql
+│   │   └── 📜 insert_single_mitarbeiter.sql
 │   └── 📂 Views/
+│       ├── 📜 PLACEHOLDER.sql
+│       └── 📜 PLACEHOLDER1.sql
 └── 📂 GUI/         # Zukünftige GUI-Implementierung
 ```
 
