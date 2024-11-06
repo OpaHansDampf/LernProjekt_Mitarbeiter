@@ -9,7 +9,6 @@ INSERT INTO Ort (PLZ, Stadt) VALUES
 ('50667', 'Köln'),
 ('60313', 'Frankfurt'),
 ('70173', 'Stuttgart'),
-('04109', 'Leipzig'),
 ('30159', 'Hannover'),
 ('40213', 'Düsseldorf'),
 ('28195', 'Bremen');
