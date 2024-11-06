@@ -16,6 +16,7 @@ CREATE TABLE Adressen(
     CONSTRAINT PK_ID_ADRESSEN PRIMARY KEY (ID_ADRESSEN),
     Strasse NVARCHAR(60),
     HausNr NVARCHAR(10),
+    Stadt NVARCHAR(40),
     PLZ CHAR(5),
     Land NVARCHAR(50),
     CONSTRAINT FK_Adressen_Ort FOREIGN KEY (PLZ)
@@ -36,11 +37,11 @@ GO
 CREATE TABLE Mitarbeiter(
     ID_Mitarbeiter INT IDENTITY
     CONSTRAINT PK_ID_Mitarbeiter PRIMARY KEY (ID_Mitarbeiter),
-    ID_ADRESSEN INT NOT NULL,
+    ID_ADRESSEN INT NULL,
     ID_GESCHLECHT INT NOT NULL,
     Vorname NVARCHAR(40),
     Nachname NVARCHAR(40),
-    letzte_aenderung DATETIME2 DEFAULT GETDATE(), --last Change festhalten
+    letzte_aenderung DATETIME2 DEFAULT GETDATE(),
     CONSTRAINT FK_Mitarbeiter_Adressen FOREIGN KEY (ID_ADRESSEN) 
         REFERENCES Adressen (ID_ADRESSEN),
     CONSTRAINT FK_Mitarbeiter_Geschlecht FOREIGN KEY (ID_GESCHLECHT) 
@@ -65,7 +66,7 @@ CREATE TABLE Projekte(
     ID_Projekt INT IDENTITY
     CONSTRAINT PK_ID_Projekt PRIMARY KEY (ID_Projekt),
     Projekt_Name NVARCHAR(50),
-    Projekt_Nummer INT  NOT NULL UNIQUE
+    Projekt_Nummer INT NOT NULL UNIQUE
 );
 GO
 
@@ -79,6 +80,14 @@ CREATE TABLE MitarbeiterProjekte(
         REFERENCES Mitarbeiter (ID_Mitarbeiter),
     CONSTRAINT FK_MitarbeiterProjekte_Projekte FOREIGN KEY (ID_Projekt) 
         REFERENCES Projekte (ID_Projekt)
+);
+GO
+
+CREATE TABLE DataQualityLog (
+    LogID INT IDENTITY(1,1) PRIMARY KEY,
+    MitarbeiterID INT,
+    Problem NVARCHAR(200),
+    Datum DATETIME2 DEFAULT GETDATE()
 );
 GO
 
@@ -97,4 +106,75 @@ CREATE TRIGGER TR_Mitarbeiter_UpdateTimestamp
         FROM Mitarbeiter m
         INNER JOIN inserted i ON m.ID_Mitarbeiter = i.ID_Mitarbeiter
     END;
+GO
+
+CREATE TRIGGER TR_Check_Missing_Data
+ON Mitarbeiter
+AFTER INSERT, UPDATE
+AS
+BEGIN
+    -- Adress-Check
+    INSERT INTO DataQualityLog(MitarbeiterID, Problem)
+    SELECT 
+        ID_Mitarbeiter,
+        'Fehlende Adresse'
+    FROM inserted
+    WHERE ID_ADRESSEN IS NULL;
+
+    -- Phone-Check
+    INSERT INTO DataQualityLog(MitarbeiterID, Problem)
+    SELECT 
+        i.ID_Mitarbeiter,
+        'Keine Telefonnummer vorhanden'
+    FROM inserted i
+    LEFT JOIN Phone p ON i.ID_Mitarbeiter = p.ID_Mitarbeiter
+    WHERE p.ID_Phone IS NULL;
+END;
+GO
+
+CREATE VIEW vw_MitarbeiterOhneAdresse AS
+SELECT 
+    ID_Mitarbeiter,
+    Vorname,
+    Nachname,
+    letzte_aenderung
+FROM Mitarbeiter
+WHERE ID_ADRESSEN IS NULL;
+GO
+
+CREATE VIEW vw_MitarbeiterOhneTelefon AS
+SELECT 
+    m.ID_Mitarbeiter,
+    m.Vorname,
+    m.Nachname,
+    m.letzte_aenderung
+FROM Mitarbeiter m
+LEFT JOIN Phone p ON m.ID_Mitarbeiter = p.ID_Mitarbeiter
+WHERE p.ID_Phone IS NULL;
+GO
+
+CREATE VIEW vw_MitarbeiterUnvollstaendig AS
+SELECT 
+    m.ID_Mitarbeiter,
+    m.Vorname,
+    m.Nachname,
+    m.letzte_aenderung,
+    CASE 
+        WHEN m.ID_ADRESSEN IS NULL THEN 1 
+        ELSE 0 
+    END AS [Adresse_fehlt],
+    CASE 
+        WHEN p.ID_Phone IS NULL THEN 1 
+        ELSE 0 
+    END AS [Telefon_fehlt]
+FROM Mitarbeiter m
+LEFT JOIN Phone p ON m.ID_Mitarbeiter = p.ID_Mitarbeiter;
+GO
+
+-- Initiale Geschlechtsdaten einfügen
+INSERT INTO Geschlecht (ID_GESCHLECHT, Geschlecht_Lang, Geschlecht_Kurz)
+VALUES 
+    (1, 'Männlich', 'm'),
+    (2, 'Weiblich', 'w'),
+    (3, 'Divers', 'd');
 GO
