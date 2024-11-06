@@ -16,7 +16,6 @@ CREATE TABLE Adressen(
     CONSTRAINT PK_ID_ADRESSEN PRIMARY KEY (ID_ADRESSEN),
     Strasse NVARCHAR(60),
     HausNr NVARCHAR(10),
-    Stadt NVARCHAR(40),
     PLZ CHAR(5),
     Land NVARCHAR(50),
     CONSTRAINT FK_Adressen_Ort FOREIGN KEY (PLZ)
@@ -49,12 +48,22 @@ CREATE TABLE Mitarbeiter(
 );
 GO
 
+CREATE TABLE Phone_Types (
+    ID_Phone_Type INT IDENTITY
+    CONSTRAINT PK_Phone_Type PRIMARY KEY (ID_Phone_Type),
+    Type_Kurz NVARCHAR(1),
+    Type_Lang NVARCHAR(20)
+);
+GO
+
 CREATE TABLE Phone(
     ID_PHONE INT IDENTITY
     CONSTRAINT PK_ID_PHONE PRIMARY KEY (ID_PHONE),
     ID_Mitarbeiter INT NOT NULL,
+    ID_Phone_Type INT NOT NULL
+    CONSTRAINT FK_Phone_Types FOREIGN KEY (ID_Phone_Type)
+        REFERENCES Phone_Types (ID_Phone_Type),
     Phone_Number NVARCHAR(40),
-    Phone_Type NVARCHAR(10),
     CONSTRAINT FK_Phone_Mitarbeiter FOREIGN KEY (ID_Mitarbeiter) 
         REFERENCES Mitarbeiter (ID_Mitarbeiter)
         ON DELETE CASCADE
@@ -171,10 +180,29 @@ FROM Mitarbeiter m
 LEFT JOIN Phone p ON m.ID_Mitarbeiter = p.ID_Mitarbeiter;
 GO
 
+CREATE VIEW v_Adressen AS
+SELECT 
+    a.ID_ADRESSEN,
+    a.Strasse,
+    a.HausNr,
+    a.PLZ,
+    o.Stadt,
+    a.Land
+FROM Adressen a
+INNER JOIN Ort o ON a.PLZ = o.PLZ;
+GO
+
 -- Initiale Geschlechtsdaten einfügen
 INSERT INTO Geschlecht (ID_GESCHLECHT, Geschlecht_Lang, Geschlecht_Kurz)
 VALUES 
     (1, 'Männlich', 'm'),
     (2, 'Weiblich', 'w'),
     (3, 'Divers', 'd');
+GO
+
+-- Initiale Phone_Types einfügen
+INSERT INTO Phone_Types (Type_Kurz, Type_Lang) VALUES
+('m', 'Mobil'),
+('p', 'Privat'),
+('g', 'Geschäftlich');
 GO
