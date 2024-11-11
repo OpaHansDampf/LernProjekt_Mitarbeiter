@@ -207,37 +207,6 @@ BEGIN
 END;
 GO
 
--- Optional: Initialer Check für alle bestehenden Datensätze
-CREATE OR ALTER PROCEDURE SP_InitialQualityCheck
-AS
-BEGIN
-    SET NOCOUNT ON;
-    
-    -- Lösche alte Qualitätsprobleme
-    TRUNCATE TABLE DataQualityLog;
-    
-    -- Prüfe fehlende Adressen
-    INSERT INTO DataQualityLog(MitarbeiterID, Problem)
-    SELECT 
-        ID_Mitarbeiter,
-        'Fehlende Adresse'
-    FROM Mitarbeiter
-    WHERE ID_ADRESSEN IS NULL;
-    
-    -- Prüfe fehlende Telefonnummern
-    INSERT INTO DataQualityLog(MitarbeiterID, Problem)
-    SELECT 
-        m.ID_Mitarbeiter,
-        'Keine Telefonnummer vorhanden'
-    FROM Mitarbeiter m
-    WHERE NOT EXISTS (
-        SELECT 1 
-        FROM Phone p 
-        WHERE p.ID_Mitarbeiter = m.ID_Mitarbeiter
-    );
-END;
-GO
-
 CREATE VIEW vw_MitarbeiterOhneAdresse AS
 SELECT 
     ID_Mitarbeiter,
