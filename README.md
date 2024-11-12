@@ -275,4 +275,18 @@ ORDER BY dql.Datum DESC;
 
 ---
 
+## 💡 Code Schnipsel und Erklärungen
+```txt
+
+### IF OBJECT_ID('table_name', 'U') IS NOT NULL
+Hier sind die wichtigsten Typen, die du mit OBJECT_ID prüfen kannst:
+
+'U' steht für "User-defined Table", also eine vom Benutzer definierte Tabelle.
+'P' steht für eine "Stored Procedure".
+'V' steht für eine "View".
+'TR' steht für einen "Trigger".
+```
+
+---
+
 [![Made with ❤️](https://img.shields.io/badge/Made%20with-%E2%9D%A4%EF%B8%8F-red)]()

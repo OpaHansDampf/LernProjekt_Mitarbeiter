@@ -1,3 +1,31 @@
+/*
+*********************************************************
+*                                                       *
+*   DATABASE CREATE SCRIPT                              *
+*                                                       *
+*   Script zum erstellen der Datenbank                  *
+*   bitte ansehen und bei Bedarf ändern,                *
+*   bei änderungen ist es möglich das                   *
+*   an allen Scripten diese gemacht werden müssen.      *
+*                                                       *
+*********************************************************
+*/
+
+--ACHTUNG NUR BEI BEDARF--
+IF DB_ID('MitarbeiterDB') IS NOT NULL
+BEGIN
+    DROP DATABASE MitarbeiterDB;
+END
+GO
+
+--  Falls die Tabelle bereits existiert, kann sie gelöscht werden (auskommentiert, bei Bedarf aktivieren)
+--  IF OBJECT_ID('table_name', 'U') IS NOT NULL
+--      BEGIN
+--          DROP TABLE table_name;
+--      END
+
+--ACHTUNG NUR BEI BEDARF--
+
 CREATE DATABASE MitarbeiterDB
 GO
 
