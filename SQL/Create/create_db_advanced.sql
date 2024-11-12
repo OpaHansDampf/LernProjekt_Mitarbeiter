@@ -42,30 +42,9 @@ CREATE TABLE Adressen (
                 ON UPDATE CASCADE
 );
 GO
--- CREATE TABLE Ort(
---     PLZ CHAR(15)
---     CONSTRAINT PK_PLZ PRIMARY KEY (PLZ),
---     Ort NVARCHAR(60),
---     Bundesland NVARCHAR(50),
---     Land NVARCHAR(50)
--- );
--- GO
-
--- CREATE TABLE Adressen(
---     ID_ADRESSEN INT IDENTITY
---     CONSTRAINT PK_ID_ADRESSEN PRIMARY KEY (ID_ADRESSEN),
---     Strasse NVARCHAR(60),
---     HausNr NVARCHAR(10),
---     PLZ CHAR(15),
---     CONSTRAINT FK_Adressen_Ort FOREIGN KEY (PLZ)
---         REFERENCES Ort (PLZ)
---         ON UPDATE CASCADE
---         ON DELETE CASCADE
--- );
--- GO
 
 CREATE TABLE Geschlecht(
-    ID_GESCHLECHT INT
+    ID_GESCHLECHT INT IDENTITY(1,1)
     CONSTRAINT PK_ID_GESCHLECHT PRIMARY KEY (ID_GESCHLECHT),
     Geschlecht_Lang NVARCHAR(50),
     Geschlecht_Kurz NVARCHAR(3)
@@ -73,7 +52,7 @@ CREATE TABLE Geschlecht(
 GO
 
 CREATE TABLE Mitarbeiter(
-    ID_Mitarbeiter INT IDENTITY
+    ID_Mitarbeiter INT IDENTITY(1,1)
     CONSTRAINT PK_ID_Mitarbeiter PRIMARY KEY (ID_Mitarbeiter),
     ID_ADRESSEN INT NULL,
     ID_GESCHLECHT INT NOT NULL,
@@ -88,7 +67,7 @@ CREATE TABLE Mitarbeiter(
 GO
 
 CREATE TABLE Phone_Types (
-    ID_Phone_Type INT IDENTITY
+    ID_Phone_Type INT IDENTITY(1,1)
     CONSTRAINT PK_Phone_Type PRIMARY KEY (ID_Phone_Type),
     Type_Kurz NVARCHAR(1),
     Type_Lang NVARCHAR(20)
@@ -96,7 +75,7 @@ CREATE TABLE Phone_Types (
 GO
 
 CREATE TABLE Phone(
-    ID_PHONE INT IDENTITY
+    ID_PHONE INT IDENTITY(1,1)
     CONSTRAINT PK_ID_PHONE PRIMARY KEY (ID_PHONE),
     ID_Mitarbeiter INT NOT NULL,
     ID_Phone_Type INT NOT NULL
@@ -111,7 +90,7 @@ CREATE TABLE Phone(
 GO
 
 CREATE TABLE Projekte(
-    ID_Projekt INT IDENTITY
+    ID_Projekt INT IDENTITY(1,1)
     CONSTRAINT PK_ID_Projekt PRIMARY KEY (ID_Projekt),
     Projekt_Name NVARCHAR(50),
     Projekt_Nummer INT NOT NULL UNIQUE
@@ -119,7 +98,7 @@ CREATE TABLE Projekte(
 GO
 
 CREATE TABLE MitarbeiterProjekte(
-    ID_Mitarbeiter_Projekt INT IDENTITY
+    ID_Mitarbeiter_Projekt INT IDENTITY(1,1)
     CONSTRAINT PK_ID_Mitarbeiter_Projekt PRIMARY KEY (ID_Mitarbeiter_Projekt),
     ID_Mitarbeiter INT NOT NULL,
     ID_Projekt INT NOT NULL,
