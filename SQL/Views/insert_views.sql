@@ -10,6 +10,8 @@
 *                                                       *
 *********************************************************
 */
+USE MitarbeiterDB;
+GO
 
 -- View: Mitarbeiter mit allen Projektbeteiligungen
 CREATE VIEW vw_MitarbeiterProjekte AS

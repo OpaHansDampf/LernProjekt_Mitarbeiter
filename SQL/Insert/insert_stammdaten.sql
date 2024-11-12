@@ -1,13 +1,20 @@
-use MitarbeiterDB
-
--- Initiale Geschlechtsdaten einfügen
-INSERT INTO Geschlecht (ID_GESCHLECHT, Geschlecht_Lang, Geschlecht_Kurz)
-VALUES 
-    (1, 'Männlich', 'm'),
-    (2, 'Weiblich', 'w'),
-    (3, 'Divers', 'd');
+USE MitarbeiterDB;
 GO
 
+-- Löscht alle Zeilen in der Tabelle 'Bundesland' (schneller als DELETE, setzt aber auch AUTO_INCREMENT-Zähler zurück)
+DELETE FROM Geschlecht;
+GO
+-- Initiale Geschlechtsdaten einfügen
+INSERT INTO Geschlecht (Geschlecht_Lang, Geschlecht_Kurz)
+VALUES 
+    ('Männlich', 'm'),
+    ('Weiblich', 'w'),
+    ('Divers', 'd');
+GO
+
+-- Löscht alle Zeilen in der Tabelle 'Bundesland' (schneller als DELETE, setzt aber auch AUTO_INCREMENT-Zähler zurück)
+DELETE FROM Phone_Types;
+GO
 -- Initiale Phone_Types einfügen
 INSERT INTO Phone_Types (Type_Kurz, Type_Lang) VALUES
 ('m', 'Mobil'),
@@ -15,8 +22,11 @@ INSERT INTO Phone_Types (Type_Kurz, Type_Lang) VALUES
 ('g', 'Geschäftlich');
 GO
 
+-- Löscht alle Zeilen in der Tabelle 'Bundesland' (schneller als DELETE, setzt aber auch AUTO_INCREMENT-Zähler zurück)
+DELETE FROM Land;
+GO
 -- Initiale GEODATEN (Laenderkennung,Land) einfügen
-INSERT INTO Land(ID_LAND, Land)
+INSERT INTO Land(ID_LAND, Land_Name)
 VALUES 
 ('AF', N'Afghanistan'),
 ('EG', N'Ägypten'),
@@ -78,7 +88,6 @@ VALUES
 ('GW', N'Guinea-Bissau'),
 ('GY', N'Guyana'),
 ('HT', N'Haiti'),
-('VA', N'Heiliger Stuhl'),
 ('HN', N'Honduras'),
 ('IN', N'Indien'),
 ('ID', N'Indonesien'),
@@ -103,8 +112,6 @@ VALUES
 ('CO', N'Kolumbien'),
 ('KM', N'Komoren'),
 ('CG', N'Kongo'),
-('CD', N'Kongo'),
-('KP', N'Korea'),
 ('KR', N'Korea'),
 ('KO', N'Kosovo'),
 ('HR', N'Kroatien'),
@@ -218,6 +225,9 @@ VALUES
 ('CY', N'Zypern');
 GO
 
+-- Löscht alle Zeilen in der Tabelle 'Bundesland' (schneller als DELETE, setzt aber auch AUTO_INCREMENT-Zähler zurück)
+DELETE FROM Bundesland;
+GO
 -- Initiale GEODATEN (Bundesland,Bundesland_Kennung) einfügen
 INSERT INTO Bundesland(Bundesland_Name,ID_LAND)
 VALUES 
@@ -239,6 +249,9 @@ VALUES
 (N'Thüringen', 'DE');
 GO
 
+-- Löscht alle Zeilen in der Tabelle 'Bundesland' (schneller als DELETE, setzt aber auch AUTO_INCREMENT-Zähler zurück)
+--DELETE FROM Ort;
+--GO
 -- Initiale GEODATEN (PLZ, Stadt, ID_Bundesland) einfügen
 INSERT INTO Ort(PLZ,Ort_Name,ID_BUNDESLAND)
 VALUES

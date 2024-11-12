@@ -12,12 +12,12 @@
 */
 
 --ACHTUNG NUR BEI BEDARF--
-IF DB_ID('MitarbeiterDB') IS NOT NULL
+/*IF DB_ID('MitarbeiterDB') IS NOT NULL
 BEGIN
     DROP DATABASE MitarbeiterDB;
 END
 GO
-
+*/
 --  Falls die Tabelle bereits existiert, kann sie gelöscht werden (auskommentiert, bei Bedarf aktivieren)
 --  IF OBJECT_ID('table_name', 'U') IS NOT NULL
 --      BEGIN
