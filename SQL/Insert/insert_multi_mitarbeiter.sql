@@ -1,33 +1,34 @@
+/*
+*********************************************************
+*                                                       *
+*   SQL INSERT EXAMPLES FOR MULTIPLE ENTRIES            *
+*                                                       *
+*   Dieses Skript dient dazu, verschiedene Einträge     *
+*   wie Adressen, Mitarbeiter, Telefonnummern,          *
+*   Projekte und Mitarbeiter-Projekte                   *
+*   gleichzeitig in eine Datenbank einzufügen.          *
+*                                                       *
+*********************************************************
+*/
+
 USE MitarbeiterDB;
 GO
 
--- Orte einfügen (Falls nicht vorhanden)
-INSERT INTO Ort (PLZ, Stadt) VALUES 
-('10115', 'Berlin'),
-('20095', 'Hamburg'),
-('80331', 'München'),
-('50667', 'Köln'),
-('60313', 'Frankfurt'),
-('70173', 'Stuttgart'),
-('30159', 'Hannover'),
-('40213', 'Düsseldorf'),
-('28195', 'Bremen');
-
 -- Adressen einfügen
-INSERT INTO Adressen (Strasse, HausNr, PLZ, Land) VALUES 
-('Hauptstraße', '1', '10115', 'Deutschland'), -- ID 1
-('Hafenstraße', '23', '20095', 'Deutschland'), -- ID 2
-('Marienplatz', '8', '80331', 'Deutschland'), -- ID 3
-('Domstraße', '15', '50667', 'Deutschland'), -- ID 4
-('Zeil', '127', '60313', 'Deutschland'), -- ID 5
-('Königstraße', '45', '70173', 'Deutschland'), -- ID 6
-('Augustusplatz', '3', '04109', 'Deutschland'), -- ID 7
-('Georgstraße', '19', '30159', 'Deutschland'), -- ID 8
-('Königsallee', '56', '40213', 'Deutschland'), -- ID 9
-('Böttcherstraße', '12', '28195', 'Deutschland'); -- ID 10 
+INSERT INTO Adressen (Strasse, Hausnummer, PLZ, ID_LAND) VALUES 
+('Hauptstraße', '1', '10115', 'DE'), -- ID 1
+('Hafenstraße', '23', '20095', 'DE'), -- ID 2
+('Marienplatz', '8', '80331', 'DE'), -- ID 3
+('Domstraße', '15', '50667', 'DE'), -- ID 4
+('Zeil', '127', '60313', 'DE'), -- ID 5
+('Königstraße', '45', '70173', 'DE'), -- ID 6
+('Augustusplatz', '3', '04109', 'DE'), -- ID 7
+('Georgstraße', '19', '30159', 'DE'), -- ID 8
+('Königsallee', '56', '40213', 'DE'), -- ID 9
+('Böttcherstraße', '12', '28195', 'DE'); -- ID 10 
 
 -- Mitarbeiter einfügen (mit Geschlecht)
--- prüfen ob richtiges Geschlecht vorhanden ist, ansonsten vorher anlegen
+-- (SELF)Prüfen ob richtiges Geschlecht vorhanden ist, ansonsten vorher anlegen
 INSERT INTO Mitarbeiter (Vorname, Nachname, ID_ADRESSEN, ID_GESCHLECHT) VALUES 
 ('Max', 'Mustermann', 1, 1),
 ('Anna', 'Schmidt', 2, 2),
@@ -41,7 +42,7 @@ INSERT INTO Mitarbeiter (Vorname, Nachname, ID_ADRESSEN, ID_GESCHLECHT) VALUES
 ('Lisa', 'Hoffmann', 10, 2);
 
 -- Telefonnummern einfügen mit korrekten Spaltennamen
--- prüfen ob richtiger Phone_Type vorhanden ist, ansonsten vorher anlegen
+-- (SELF)Prüfen ob richtiger Phone_Type vorhanden ist, ansonsten vorher anlegen
 INSERT INTO Phone (ID_Mitarbeiter, Phone_Number, ID_Phone_Type) VALUES 
 (1, '030 12345678', 2),  
 (1, '0151 11111111', 1),

@@ -1,10 +1,26 @@
+/*
+*********************************************************
+*                                                       *
+*   SQL INSERT EXAMPLES FOR SINGEL ENTRIES              *
+*                                                       *
+*   Dieses Skript dient dazu, einzelne Einträge         *
+*   wie Adressen, Mitarbeiter, Telefonnummern,          *
+*   Projekte und Mitarbeiter-Projekte                   *
+*   in eine Datenbank einzufügen.                       *
+*                                                       *
+*********************************************************
+*/
+
+USE MitarbeiterDB
+GO
+
 -- 1. Erst den Ort anlegen (falls noch nicht vorhanden)
-INSERT INTO Ort (PLZ, Stadt)
+INSERT INTO Ort (PLZ, Ort_Name, ID_BUNDESLAND)
 VALUES ('12345', 'Berlin');
 
 -- 2. Dann die Adresse
-INSERT INTO Adressen (Strasse, HausNr, PLZ, Land)
-VALUES ('Musterstraße', '42', '12345', 'Deutschland');
+INSERT INTO Adressen (Strasse, Hausnummer, PLZ, ID_LAND)
+VALUES ('Musterstraße', '00042', '12345', 'DE');
 
 -- 3. Den Mitarbeiter anlegen und die ID speichern
 DECLARE @MitarbeiterID INT;
