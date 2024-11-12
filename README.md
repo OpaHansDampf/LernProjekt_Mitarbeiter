@@ -93,10 +93,7 @@ SQL/Create/create_db_advanced.sql
   ├── Alle Tabellen
   ├── Indizes
   ├── Trigger
-  ├── Views
-  └── Initiale Stammdaten
-      ├── Geschlecht
-      └── Phone_Types
+  └── Views
 ```
 
 #### 2️⃣ Stammdaten einfügen
@@ -105,7 +102,7 @@ SQL/Create/create_db_advanced.sql
 SQL/Insert/insert_StammDaten.sql    
 
 📚 Enthält und wird erweitert um:
-  ├── PLZ-Verzeichnis
+  ├── PLZ(DE),Bundesländer(DE),Länder(Weltweit)-Verzeichnis
   └── Weitere Stammdaten (kontinuierliche Erweiterung)
 ```
 
@@ -149,6 +146,8 @@ SQL/Insert/insert_multi_Mitarbeiter_bsp.sql
 | `Mitarbeiter` | 👤 Zentrale Mitarbeiterdaten mit Zeitstempel |
 | `Adressen` | 📍 Adressverwaltung |
 | `Ort` | 🏘️ PLZ-Stammdaten |
+| `Bundesland` | 🏘️ Bundesländer-Stammdaten |
+| `Land` | 🏘️ Länder-Stammdaten |
 | `Phone` | 📱 Telefonnummern |
 | `Phone_Types` | 📋 Telefontypen (mobil, privat, geschäftlich) |
 | `Geschlecht` | 👥 Geschlechter-Stammdaten |
@@ -204,22 +203,25 @@ SQL/Insert/insert_multi_Mitarbeiter_bsp.sql
 
 ---
 
-## 📊 Beispielabfragen
+## 📊 Beispielabfragen (ungetestet!!!)
 
 ### 1️⃣ Mitarbeiter mit Kontaktdaten
 ```sql
 SELECT 
     m.Vorname + ' ' + m.Nachname AS MitarbeiterName,
-    a.Strasse + ' ' + a.HausNr AS Adresse,
-    o.PLZ + ' ' + o.Stadt AS Ort,
+    a.Strasse + ' ' + a.Hausnummer + ISNULL(' ' + a.Hausnummer_Zusatz, '') + ISNULL(' ' + a.Adresszusatz, '') AS Adresse,
+    o.PLZ + ' ' + o.Ort_Name + ' ' + b.Bundesland_Name + ' ' + l.Land_Name AS Ort,
     p.Phone_Number,
     pt.Type_Lang AS TelefonTyp
 FROM Mitarbeiter m
 LEFT JOIN Adressen a ON m.ID_ADRESSEN = a.ID_ADRESSEN
 LEFT JOIN Ort o ON a.PLZ = o.PLZ
+LEFT JOIN Bundesland b ON o.ID_BUNDESLAND = b.ID_BUNDESLAND
+LEFT JOIN Land l ON a.ID_LAND = l.ID_LAND
 LEFT JOIN Phone p ON m.ID_Mitarbeiter = p.ID_Mitarbeiter
 LEFT JOIN Phone_Types pt ON p.ID_Phone_Type = pt.ID_Phone_Type
 ORDER BY m.Nachname, m.Vorname;
+
 ```
 
 ### 2️⃣ Projektübersicht
