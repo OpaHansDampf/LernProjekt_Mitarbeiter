@@ -5,7 +5,8 @@ USE MitarbeiterDB;
 GO
 
 CREATE TABLE Land (
-    ID_LAND INT IDENTITY(1,1),
+    ID_LAND VARCHAR(2) UNIQUE,
+        CONSTRAINT PK_ID_LAND PRIMARY KEY (ID_LAND),
     Land_Name NVARCHAR(50) NOT NULL UNIQUE
 );
 GO
@@ -21,7 +22,7 @@ GO
 
 CREATE TABLE Ort (
     PLZ VARCHAR(10)
-    CONSTRAINT PF_PLZ PRIMARY KEY (PLZ),
+        CONSTRAINT PF_PLZ PRIMARY KEY (PLZ),
     Ort_Name NVARCHAR(60) NOT NULL,
     ID_BUNDESLAND INT NOT NULL,
         CONSTRAINT FK_Ort_Bundesland FOREIGN KEY (ID_BUNDESLAND)
@@ -39,13 +40,17 @@ CREATE TABLE Adressen (
     PLZ VARCHAR(10) NOT NULL,
         CONSTRAINT FK_Adressen_Ort FOREIGN KEY (PLZ)
             REFERENCES Ort (PLZ)
+                ON UPDATE CASCADE,
+    ID_LAND VARCHAR(2) NOT NULL,
+        CONSTRAINT FK_Adressen_Land FOREIGN KEY (ID_LAND)
+            REFERENCES Land (ID_LAND)
                 ON UPDATE CASCADE
 );
 GO
 
 CREATE TABLE Geschlecht(
     ID_GESCHLECHT INT IDENTITY(1,1)
-    CONSTRAINT PK_ID_GESCHLECHT PRIMARY KEY (ID_GESCHLECHT),
+        CONSTRAINT PK_ID_GESCHLECHT PRIMARY KEY (ID_GESCHLECHT),
     Geschlecht_Lang NVARCHAR(50),
     Geschlecht_Kurz NVARCHAR(3)
 );
@@ -53,22 +58,22 @@ GO
 
 CREATE TABLE Mitarbeiter(
     ID_Mitarbeiter INT IDENTITY(1,1)
-    CONSTRAINT PK_ID_Mitarbeiter PRIMARY KEY (ID_Mitarbeiter),
+        CONSTRAINT PK_ID_Mitarbeiter PRIMARY KEY (ID_Mitarbeiter),
     ID_ADRESSEN INT NULL,
     ID_GESCHLECHT INT NOT NULL,
     Vorname NVARCHAR(40),
     Nachname NVARCHAR(40),
     letzte_aenderung DATETIME2 DEFAULT GETDATE(),
-    CONSTRAINT FK_Mitarbeiter_Adressen FOREIGN KEY (ID_ADRESSEN) 
-        REFERENCES Adressen (ID_ADRESSEN),
-    CONSTRAINT FK_Mitarbeiter_Geschlecht FOREIGN KEY (ID_GESCHLECHT) 
-        REFERENCES Geschlecht (ID_GESCHLECHT)
+        CONSTRAINT FK_Mitarbeiter_Adressen FOREIGN KEY (ID_ADRESSEN) 
+            REFERENCES Adressen (ID_ADRESSEN),
+        CONSTRAINT FK_Mitarbeiter_Geschlecht FOREIGN KEY (ID_GESCHLECHT) 
+            REFERENCES Geschlecht (ID_GESCHLECHT)
 );
 GO
 
 CREATE TABLE Phone_Types (
     ID_Phone_Type INT IDENTITY(1,1)
-    CONSTRAINT PK_Phone_Type PRIMARY KEY (ID_Phone_Type),
+        CONSTRAINT PK_Phone_Type PRIMARY KEY (ID_Phone_Type),
     Type_Kurz NVARCHAR(1),
     Type_Lang NVARCHAR(20)
 );
@@ -76,22 +81,22 @@ GO
 
 CREATE TABLE Phone(
     ID_PHONE INT IDENTITY(1,1)
-    CONSTRAINT PK_ID_PHONE PRIMARY KEY (ID_PHONE),
+        CONSTRAINT PK_ID_PHONE PRIMARY KEY (ID_PHONE),
     ID_Mitarbeiter INT NOT NULL,
     ID_Phone_Type INT NOT NULL
-    CONSTRAINT FK_Phone_Types FOREIGN KEY (ID_Phone_Type)
-        REFERENCES Phone_Types (ID_Phone_Type),
+        CONSTRAINT FK_Phone_Types FOREIGN KEY (ID_Phone_Type)
+            REFERENCES Phone_Types (ID_Phone_Type),
     Phone_Number NVARCHAR(40),
-    CONSTRAINT FK_Phone_Mitarbeiter FOREIGN KEY (ID_Mitarbeiter) 
-        REFERENCES Mitarbeiter (ID_Mitarbeiter)
-        ON DELETE CASCADE
-        ON UPDATE CASCADE
+        CONSTRAINT FK_Phone_Mitarbeiter FOREIGN KEY (ID_Mitarbeiter) 
+            REFERENCES Mitarbeiter (ID_Mitarbeiter)
+                ON DELETE CASCADE
+                ON UPDATE CASCADE
 );
 GO
 
 CREATE TABLE Projekte(
     ID_Projekt INT IDENTITY(1,1)
-    CONSTRAINT PK_ID_Projekt PRIMARY KEY (ID_Projekt),
+        CONSTRAINT PK_ID_Projekt PRIMARY KEY (ID_Projekt),
     Projekt_Name NVARCHAR(50),
     Projekt_Nummer INT NOT NULL UNIQUE
 );
@@ -99,14 +104,14 @@ GO
 
 CREATE TABLE MitarbeiterProjekte(
     ID_Mitarbeiter_Projekt INT IDENTITY(1,1)
-    CONSTRAINT PK_ID_Mitarbeiter_Projekt PRIMARY KEY (ID_Mitarbeiter_Projekt),
+        CONSTRAINT PK_ID_Mitarbeiter_Projekt PRIMARY KEY (ID_Mitarbeiter_Projekt),
     ID_Mitarbeiter INT NOT NULL,
     ID_Projekt INT NOT NULL,
     Projekt_Stunden DECIMAL(5,2),
-    CONSTRAINT FK_MitarbeiterProjekte_Mitarbeiter FOREIGN KEY (ID_Mitarbeiter) 
-        REFERENCES Mitarbeiter (ID_Mitarbeiter),
-    CONSTRAINT FK_MitarbeiterProjekte_Projekte FOREIGN KEY (ID_Projekt) 
-        REFERENCES Projekte (ID_Projekt)
+        CONSTRAINT FK_MitarbeiterProjekte_Mitarbeiter FOREIGN KEY (ID_Mitarbeiter) 
+            REFERENCES Mitarbeiter (ID_Mitarbeiter),
+        CONSTRAINT FK_MitarbeiterProjekte_Projekte FOREIGN KEY (ID_Projekt) 
+            REFERENCES Projekte (ID_Projekt)
 );
 GO
 
