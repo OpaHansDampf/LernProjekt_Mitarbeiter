@@ -1,252 +1,3 @@
-USE MitarbeiterDB;
-
--- GO
--- -- Initiale Geschlechtsdaten einfügen
--- INSERT INTO
---     Geschlecht (Geschlecht_Lang, Geschlecht_Kurz)
--- VALUES
---     ('Männlich', 'm'),
---     ('Weiblich', 'w'),
---     ('Divers', 'd');
-
--- GO
--- -- Initiale Phone_Types einfügen
--- INSERT INTO
---     Phone_Types (Type_Kurz, Type_Lang)
--- VALUES
---     ('m', 'Mobil'),
---     ('p', 'Privat'),
---     ('g', 'Geschäftlich');
-
--- GO
--- -- Initiale GEODATEN (Laenderkennung,Land) einfügen
--- INSERT INTO
---     Land (ID_LAND, Land_Name)
--- VALUES
---     ('AF', N'Afghanistan'),
---     ('EG', N'Ägypten'),
---     ('AL', N'Albanien'),
---     ('DZ', N'Algerien'),
---     ('AD', N'Andorra'),
---     ('AO', N'Angola'),
---     ('AG', N'Antigua und Barbuda'),
---     ('GQ', N'Äquatorialguinea'),
---     ('AR', N'Argentinien'),
---     ('AM', N'Armenien'),
---     ('AZ', N'Aserbaidschan'),
---     ('ET', N'Äthiopien'),
---     ('AU', N'Australien'),
---     ('BS', N'Bahamas'),
---     ('BH', N'Bahrain'),
---     ('BD', N'Bangladesch'),
---     ('BB', N'Barbados'),
---     ('BY', N'Belarus'),
---     ('BE', N'Belgien'),
---     ('BZ', N'Belize'),
---     ('BJ', N'Benin'),
---     ('BT', N'Bhutan'),
---     ('BO', N'Bolivien'),
---     ('BA', N'Bosnien und Herzegowina'),
---     ('BW', N'Botsuana'),
---     ('BR', N'Brasilien'),
---     ('BN', N'Brunei Darussalam'),
---     ('BG', N'Bulgarien'),
---     ('BF', N'Burkina Faso'),
---     ('BI', N'Burundi'),
---     ('CV', N'Cabo Verde'),
---     ('CL', N'Chile'),
---     ('CN', N'China'),
---     ('CK', N'Cookinseln'),
---     ('CR', N'Costa Rica'),
---     ('CI', N'Côte d`Ivoire'),
---     ('DK', N'Dänemark'),
---     ('DE', N'Deutschland'),
---     ('DM', N'Dominica'),
---     ('DO', N'Dominikanische Republik'),
---     ('DJ', N'Dschibuti'),
---     ('EC', N'Ecuador'),
---     ('SV', N'El Salvador'),
---     ('ER', N'Eritrea'),
---     ('EE', N'Estland'),
---     ('SZ', N'Eswatini'),
---     ('FJ', N'Fidschi'),
---     ('FI', N'Finnland'),
---     ('FR', N'Frankreich'),
---     ('GA', N'Gabun'),
---     ('GM', N'Gambia'),
---     ('GE', N'Georgien'),
---     ('GH', N'Ghana'),
---     ('GD', N'Grenada'),
---     ('GR', N'Griechenland'),
---     ('GT', N'Guatemala'),
---     ('GN', N'Guinea'),
---     ('GW', N'Guinea-Bissau'),
---     ('GY', N'Guyana'),
---     ('HT', N'Haiti'),
---     ('HN', N'Honduras'),
---     ('IN', N'Indien'),
---     ('ID', N'Indonesien'),
---     ('IQ', N'Irak'),
---     ('IR', N'Iran'),
---     ('IE', N'Irland'),
---     ('IS', N'Island'),
---     ('IL', N'Israel'),
---     ('IT', N'Italien'),
---     ('JM', N'Jamaika'),
---     ('JP', N'Japan'),
---     ('YE', N'Jemen'),
---     ('JO', N'Jordanien'),
---     ('KH', N'Kambodscha'),
---     ('CM', N'Kamerun'),
---     ('CA', N'Kanada'),
---     ('KZ', N'Kasachstan'),
---     ('QA', N'Katar'),
---     ('KE', N'Kenia'),
---     ('KG', N'Kirgisistan'),
---     ('KI', N'Kiribati'),
---     ('CO', N'Kolumbien'),
---     ('KM', N'Komoren'),
---     ('CG', N'Kongo'),
---     ('KR', N'Korea'),
---     ('KO', N'Kosovo'),
---     ('HR', N'Kroatien'),
---     ('CU', N'Kuba'),
---     ('KW', N'Kuwait'),
---     ('LA', N'Laos'),
---     ('LS', N'Lesotho'),
---     ('LV', N'Lettland'),
---     ('LB', N'Libanon'),
---     ('LR', N'Liberia'),
---     ('LY', N'Libyen'),
---     ('LI', N'Liechtenstein'),
---     ('LT', N'Litauen'),
---     ('LU', N'Luxemburg'),
---     ('MG', N'Madagaskar'),
---     ('MW', N'Malawi'),
---     ('MY', N'Malaysia'),
---     ('MV', N'Malediven'),
---     ('ML', N'Mali'),
---     ('MT', N'Malta'),
---     ('MA', N'Marokko'),
---     ('MH', N'Marshallinseln'),
---     ('MR', N'Mauretanien'),
---     ('MU', N'Mauritius'),
---     ('MX', N'Mexiko'),
---     ('FM', N'Mikronesien'),
---     ('MD', N'Moldau'),
---     ('MC', N'Monaco'),
---     ('MN', N'Mongolei'),
---     ('ME', N'Montenegro'),
---     ('MZ', N'Mosambik'),
---     ('MM', N'Myanmar'),
---     ('NA', N'Namibia'),
---     ('NR', N'Nauru'),
---     ('NP', N'Nepal'),
---     ('NZ', N'Neuseeland'),
---     ('NI', N'Nicaragua'),
---     ('NL', N'Niederlande'),
---     ('NE', N'Niger'),
---     ('NG', N'Nigeria'),
---     ('NU', N'Niue'),
---     ('MK', N'Nordmazedonien'),
---     ('NO', N'Norwegen'),
---     ('OM', N'Oman'),
---     ('AT', N'Österreich'),
---     ('PK', N'Pakistan'),
---     ('PW', N'Palau'),
---     ('PA', N'Panama'),
---     ('PG', N'Papua-Neuguinea'),
---     ('PY', N'Paraguay'),
---     ('PE', N'Peru'),
---     ('PH', N'Philippinen'),
---     ('PL', N'Polen'),
---     ('PT', N'Portugal'),
---     ('RW', N'Ruanda'),
---     ('RO', N'Rumänien'),
---     ('RU', N'Russische Föderation'),
---     ('SB', N'Salomonen'),
---     ('ZM', N'Sambia'),
---     ('WS', N'Samoa'),
---     ('SM', N'San Marino'),
---     ('ST', N'São Tomé und Príncipe'),
---     ('SA', N'Saudi-Arabien'),
---     ('SE', N'Schweden'),
---     ('CH', N'Schweiz'),
---     ('SN', N'Senegal'),
---     ('RS', N'Serbien '),
---     ('SC', N'Seychellen'),
---     ('SL', N'Sierra Leone'),
---     ('ZW', N'Simbabwe'),
---     ('SG', N'Singapur'),
---     ('SK', N'Slowakei'),
---     ('SI', N'Slowenien'),
---     ('SO', N'Somalia'),
---     ('ES', N'Spanien'),
---     ('LK', N'Sri Lanka'),
---     ('KN', N'St. Kitts und Nevis'),
---     ('LC', N'St. Lucia'),
---     ('VC', N'St. Vincent und die Grenadinen'),
---     ('ZA', N'Sdafrika'),
---     ('SD', N'Sudan'),
---     ('SS', N'Sdsudan'),
---     ('SR', N'Suriname'),
---     ('SY', N'Syrien, Arabische Republik'),
---     ('TJ', N'Tadschikistan'),
---     ('TZ', N'Tansania, Vereinigte Republik'),
---     ('TH', N'Thailand'),
---     ('TL', N'Timor-Leste'),
---     ('TG', N'Togo'),
---     ('TO', N'Tonga'),
---     ('TT', N'Trinidad und Tobago'),
---     ('TD', N'Tschad'),
---     ('CZ', N'Tschechien'),
---     ('TN', N'Tunesien'),
---     ('TR', N'Türkei'),
---     ('TM', N'Turkmenistan'),
---     ('TV', N'Tuvalu'),
---     ('UG', N'Uganda'),
---     ('UA', N'Ukraine'),
---     ('HU', N'Ungarn'),
---     ('UY', N'Uruguay'),
---     ('UZ', N'Usbekistan'),
---     ('VU', N'Vanuatu'),
---     ('VA', N'Vatikanstadt'),
---     ('VE', N'Venezuela, Bolivarische Republik'),
---     ('AE', N'Vereinigte Arabische Emirate'),
---     ('US', N'Vereinigte Staaten'),
---     ('GB', N'Vereinigtes Königreich'),
---     ('VN', N'Vietnam'),
---     ('CF', N'Zentralafrikanische Republik'),
---     ('CY', N'Zypern');
-
--- GO
--- -- Initiale GEODATEN (Bundesland,Bundesland_Kennung) einfügen
--- INSERT INTO
---     Bundesland (Bundesland_Name, ID_LAND)
--- VALUES
---     (N'Baden-Württemberg', 'DE'),
---     (N'Bayern', 'DE'),
---     (N'Berlin', 'DE'),
---     (N'Brandenburg', 'DE'),
---     (N'Bremen', 'DE'),
---     (N'Hamburg', 'DE'),
---     (N'Hessen', 'DE'),
---     (N'Mecklenburg-Vorpommern', 'DE'),
---     (N'Niedersachsen', 'DE'),
---     (N'Nordrhein-Westfalen', 'DE'),
---     (N'Rheinland-Pfalz', 'DE'),
---     (N'Saarland', 'DE'),
---     (N'Sachsen', 'DE'),
---     (N'Sachsen-Anhalt', 'DE'),
---     (N'Schleswig-Holstein', 'DE'),
---     (N'Thüringen', 'DE');
--- GO 
--- COMMIT
--- Initiale GEODATEN (PLZ, Stadt, ID_Bundesland) einfügen
-BEGIN TRANSACTION;
-INSERT INTO
-    Ort (PLZ, Ort_Name, ID_BUNDESLAND)
-VALUES
 ('01067', N'Dresden', 13),
 ('01069', N'Dresden', 13),
 ('01097', N'Dresden', 13),
@@ -1146,10 +897,7 @@ VALUES
 ('07589', N'Lindenkreuz', 16),
 ('07589', N'Münchenbernsdorf', 16),
 ('07607', N'Gösen', 16),
-('07607', N'Eisenberg', 16);
-
-COMMIT TRANSACTION; BEGIN TRANSACTION; INSERT INTO Ort(PLZ,Ort_Name,ID_BUNDESLAND)VALUES
-
+('07607', N'Eisenberg', 16),
 ('07607', N'Hainspitz', 16),
 ('07613', N'Hartmannsdorf', 16),
 ('07613', N'Heideland', 16),
@@ -2049,10 +1797,7 @@ COMMIT TRANSACTION; BEGIN TRANSACTION; INSERT INTO Ort(PLZ,Ort_Name,ID_BUNDESLAN
 ('16775', N'Stechlin', 4),
 ('16792', N'Zehdenick', 4),
 ('16798', N'Fürstenberg/Havel', 4),
-('16816', N'Buskow', 4);
-
-COMMIT TRANSACTION; BEGIN TRANSACTION; INSERT INTO Ort(PLZ,Ort_Name,ID_BUNDESLAND)VALUES
-
+('16816', N'Buskow', 4),
 ('16816', N'Neuruppin', 4),
 ('16816', N'Nietwerder', 4),
 ('16818', N'Deutschhof', 4),
@@ -2952,10 +2697,7 @@ COMMIT TRANSACTION; BEGIN TRANSACTION; INSERT INTO Ort(PLZ,Ort_Name,ID_BUNDESLAN
 ('19294', N'Karstädt', 8),
 ('19294', N'Krinitz', 8),
 ('19294', N'Niendorf', 8),
-('19294', N'Gorlosen', 8);
-
-COMMIT TRANSACTION; BEGIN TRANSACTION; INSERT INTO Ort(PLZ,Ort_Name,ID_BUNDESLAND)VALUES
-
+('19294', N'Gorlosen', 8),
 ('19294', N'Güritz Försterei', 8),
 ('19294', N'Karenz', 8),
 ('19294', N'Malk Göhren', 8),
@@ -3855,10 +3597,7 @@ COMMIT TRANSACTION; BEGIN TRANSACTION; INSERT INTO Ort(PLZ,Ort_Name,ID_BUNDESLAN
 ('23992', N'Tüzen', 8),
 ('23992', N'Wakendorf', 8),
 ('23992', N'Warnkenhagen', 8),
-('23992', N'Zweihausen', 8);
-
-COMMIT TRANSACTION; BEGIN TRANSACTION; INSERT INTO Ort(PLZ,Ort_Name,ID_BUNDESLAND)VALUES
-
+('23992', N'Zweihausen', 8),
 ('23992', N'Neukloster', 8),
 ('23992', N'Alt Poorstorf', 8),
 ('23992', N'Babst', 8),
@@ -4758,10 +4497,7 @@ COMMIT TRANSACTION; BEGIN TRANSACTION; INSERT INTO Ort(PLZ,Ort_Name,ID_BUNDESLAN
 ('25836', N'Welt', 15),
 ('25840', N'An der Chaussee', 15),
 ('25840', N'Ziegelhof', 15),
-('25840', N'Friedrichstadt', 15);
-
-COMMIT TRANSACTION; BEGIN TRANSACTION; INSERT INTO Ort(PLZ,Ort_Name,ID_BUNDESLAND)VALUES
-
+('25840', N'Friedrichstadt', 15),
 ('25840', N'Feddersdeich', 15),
 ('25840', N'Hakenhof', 15),
 ('25840', N'Koldenbüttel', 15),
@@ -5661,10 +5397,7 @@ COMMIT TRANSACTION; BEGIN TRANSACTION; INSERT INTO Ort(PLZ,Ort_Name,ID_BUNDESLAN
 ('34346', N'Hann. Münden', 9),
 ('34355', N'Kassel', 9),
 ('34355', N'Staufenberg', 9),
-('34359', N'Reinhardshagen', 7);
-
-COMMIT TRANSACTION; BEGIN TRANSACTION; INSERT INTO Ort(PLZ,Ort_Name,ID_BUNDESLAND)VALUES
-
+('34359', N'Reinhardshagen', 7),
 ('34369', N'Hofgeismar', 7),
 ('34376', N'Immenhausen', 7),
 ('34379', N'Calden', 7),
@@ -6564,10 +6297,7 @@ COMMIT TRANSACTION; BEGIN TRANSACTION; INSERT INTO Ort(PLZ,Ort_Name,ID_BUNDESLAN
 ('39446', N'Staßfurt', 14),
 ('39448', N'Börde-Hakel', 14),
 ('39517', N'Burgstall', 14),
-('39517', N'Bertingen', 14);
-
-COMMIT TRANSACTION; BEGIN TRANSACTION; INSERT INTO Ort(PLZ,Ort_Name,ID_BUNDESLAND)VALUES
-
+('39517', N'Bertingen', 14),
 ('39517', N'Cröchern', 14),
 ('39517', N'Dolle', 14),
 ('39517', N'Mahlwinkel', 14),
@@ -7467,10 +7197,7 @@ COMMIT TRANSACTION; BEGIN TRANSACTION; INSERT INTO Ort(PLZ,Ort_Name,ID_BUNDESLAN
 ('53539', N'Borler', 11),
 ('53539', N'Brücktal', 11),
 ('53539', N'Gelenberg', 11),
-('53539', N'Kelberg', 11);
-
-COMMIT TRANSACTION; BEGIN TRANSACTION; INSERT INTO Ort(PLZ,Ort_Name,ID_BUNDESLAND)VALUES
-
+('53539', N'Kelberg', 11),
 ('53539', N'Kirsbach', 11),
 ('53539', N'Reimerath', 11),
 ('53539', N'Welcherath', 11),
@@ -8370,10 +8097,7 @@ COMMIT TRANSACTION; BEGIN TRANSACTION; INSERT INTO Ort(PLZ,Ort_Name,ID_BUNDESLAN
 ('55592', N'Raumbach', 11),
 ('55592', N'Rehborn', 11),
 ('55593', N'Rüdesheim', 11),
-('55595', N'Dalberg', 11);
-
-COMMIT TRANSACTION; BEGIN TRANSACTION; INSERT INTO Ort(PLZ,Ort_Name,ID_BUNDESLAND)VALUES
-
+('55595', N'Dalberg', 11),
 ('55595', N'Gutenberg', 11),
 ('55595', N'Roxheim', 11),
 ('55595', N'Sankt Katharinen', 11),
@@ -9273,10 +8997,7 @@ COMMIT TRANSACTION; BEGIN TRANSACTION; INSERT INTO Ort(PLZ,Ort_Name,ID_BUNDESLAN
 ('57537', N'Thal', 11),
 ('57537', N'Mittelhof', 11),
 ('57537', N'Wissen', 11),
-('57537', N'Dellingen', 11);
-
-COMMIT TRANSACTION; BEGIN TRANSACTION; INSERT INTO Ort(PLZ,Ort_Name,ID_BUNDESLAND)VALUES
-
+('57537', N'Dellingen', 11),
 ('57537', N'Hövels', 11),
 ('57537', N'Kaltau', 11),
 ('57537', N'Lechenbach', 11),
@@ -10176,10 +9897,7 @@ COMMIT TRANSACTION; BEGIN TRANSACTION; INSERT INTO Ort(PLZ,Ort_Name,ID_BUNDESLAN
 ('66996', N'Ludwigswinkel', 11),
 ('66996', N'Schindhard', 11),
 ('66996', N'Schönau (Pfalz)', 11),
-('66999', N'Hinterweidenthal', 11);
-
-COMMIT TRANSACTION; BEGIN TRANSACTION; INSERT INTO Ort(PLZ,Ort_Name,ID_BUNDESLAND)VALUES
-
+('66999', N'Hinterweidenthal', 11),
 ('66999', N'Wieslauterhof', 11),
 ('67059', N'Ludwigshafen am Rhein', 11),
 ('67061', N'Ludwigshafen am Rhein', 11),
@@ -11079,10 +10797,7 @@ COMMIT TRANSACTION; BEGIN TRANSACTION; INSERT INTO Ort(PLZ,Ort_Name,ID_BUNDESLAN
 ('73553', N'Birkhof', 1),
 ('73553', N'Ölmühle', 1),
 ('73553', N'Alfdorf', 1),
-('73553', N'Haselbach-Söldhaus', 1);
-
-COMMIT TRANSACTION; BEGIN TRANSACTION; INSERT INTO Ort(PLZ,Ort_Name,ID_BUNDESLAND)VALUES
-
+('73553', N'Haselbach-Söldhaus', 1),
 ('73553', N'Schillinghof', 1),
 ('73553', N'Voggenmühlhöfle', 1),
 ('73557', N'Mutlangen', 1),
@@ -11982,10 +11697,7 @@ COMMIT TRANSACTION; BEGIN TRANSACTION; INSERT INTO Ort(PLZ,Ort_Name,ID_BUNDESLAN
 ('81677', N'München', 2),
 ('81679', N'München', 2),
 ('81735', N'München', 2),
-('81737', N'München', 2);
-
-COMMIT TRANSACTION; BEGIN TRANSACTION; INSERT INTO Ort(PLZ,Ort_Name,ID_BUNDESLAND)VALUES
-
+('81737', N'München', 2),
 ('81739', N'München', 2),
 ('81825', N'München', 2),
 ('81827', N'München', 2),
@@ -12885,10 +12597,7 @@ COMMIT TRANSACTION; BEGIN TRANSACTION; INSERT INTO Ort(PLZ,Ort_Name,ID_BUNDESLAN
 ('86850', N'Fischach', 2),
 ('86853', N'Langerringen', 2),
 ('86854', N'Amberg', 2),
-('86856', N'Hiltenfingen', 2);
-
-COMMIT TRANSACTION; BEGIN TRANSACTION; INSERT INTO Ort(PLZ,Ort_Name,ID_BUNDESLAND)VALUES
-
+('86856', N'Hiltenfingen', 2),
 ('86857', N'Hurlach', 2),
 ('86859', N'Igling', 2),
 ('86860', N'Jengen', 2),
@@ -13788,10 +13497,7 @@ COMMIT TRANSACTION; BEGIN TRANSACTION; INSERT INTO Ort(PLZ,Ort_Name,ID_BUNDESLAN
 ('93051', N'Regensburg', 2),
 ('93053', N'Regensburg', 2),
 ('93055', N'Regensburg', 2),
-('93057', N'Regensburg', 2);
-
-COMMIT TRANSACTION; BEGIN TRANSACTION; INSERT INTO Ort(PLZ,Ort_Name,ID_BUNDESLAND)VALUES
-
+('93057', N'Regensburg', 2),
 ('93059', N'Regensburg', 2),
 ('93073', N'Neutraubling', 2),
 ('93077', N'Bad Abbach', 2),
@@ -14691,10 +14397,7 @@ COMMIT TRANSACTION; BEGIN TRANSACTION; INSERT INTO Ort(PLZ,Ort_Name,ID_BUNDESLAN
 ('98669', N'Veilsdorf', 16),
 ('98673', N'Brünn', 16),
 ('98673', N'Auengrund', 16),
-('98673', N'Eisfeld', 16);
-
-COMMIT TRANSACTION; BEGIN TRANSACTION; INSERT INTO Ort(PLZ,Ort_Name,ID_BUNDESLAND)VALUES
-
+('98673', N'Eisfeld', 16),
 ('98693', N'Martinroda', 16),
 ('98693', N'Ilmenau', 16),
 ('98694', N'Ilmenau', 16),
@@ -14949,5 +14652,3 @@ COMMIT TRANSACTION; BEGIN TRANSACTION; INSERT INTO Ort(PLZ,Ort_Name,ID_BUNDESLAN
 ('99996', N'Unstruttal', 16),
 ('99998', N'Körner', 16),
 ('99998', N'Mühlhausen/Thüringen', 16);
-COMMIT TRANSACTION;
-GO
