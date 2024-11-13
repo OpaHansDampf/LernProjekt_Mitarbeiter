@@ -6,6 +6,8 @@
 
 > Ein Lernprojekt zur praktischen Anwendung von Datenbankdesign und -entwicklung, von der Konzeption bis zur Implementierung einer grafischen Benutzeroberfläche.
 
+[🔧 Technische Details und Implementierung finden Sie in der TECHNICAL.md](./TECHNICAL.md)
+
 ---
 
 ## 📑 Inhaltsverzeichnis
@@ -43,9 +45,11 @@ Das Projekt entstand als Lernprojekt zur Demonstration des vollständigen Entwic
 4. 💻 **Implementierung**
    - MSSQL Datenbankentwicklung
    - Testdaten-Integration
+   - C# Integration
 
-5. 🖥️ **Frontend-Entwicklung** (geplant)
+5. 🖥️ **Frontend-Entwicklung**
    - GUI für Dateneingabe
+   - PLZ-Validierung und Autocomplete
    - Benutzeroberfläche für Abfragen
 
 ---
@@ -54,8 +58,8 @@ Das Projekt entstand als Lernprojekt zur Demonstration des vollständigen Entwic
 ```
 LernProjekt_Mitarbeiter/
 ├── 📝 README.md
+├── 📝 TECHNICAL.md
 ├── 📂 Dokumentation/
-│   ├── 📄 Excel_Entwurf.xlsx (COMMING SOON)
 │   ├── 📄 ER-Modell.pdf (COMMING SOON)
 │   └── 📄 UML-Diagramm.png (NOT FINAL)
 ├── 📂 SQL/
@@ -67,9 +71,11 @@ LernProjekt_Mitarbeiter/
 │   │   ├── 📜 insert_multi_mitarbeiter.sql
 │   │   └── 📜 insert_single_mitarbeiter.sql
 │   └── 📂 Views/
-│       ├── 📜 PLACEHOLDER.sql
-│       └── 📜 PLACEHOLDER1.sql
-└── 📂 GUI/         # Zukünftige GUI-Implementierung
+│       ├── 📜 view_mitarbeiter_kontakt.sql
+│       └── 📜 view_projekt_uebersicht.sql
+└── 📂 CSharp/
+    ├── 📂 Models/
+    └── 📂 Forms/
 ```
 
 ---
@@ -79,6 +85,7 @@ LernProjekt_Mitarbeiter/
 ### 📋 Voraussetzungen
 - 🔷 Microsoft SQL Server 2019 (oder höher)
 - 🔷 SQL Server Management Studio (SSMS)
+- 🔷 Visual Studio 2022 (für C# Entwicklung)
 - 🔷 Mindestens 100MB freier Festplattenspeicher
 - 🔷 Serverrolle 'dbcreator'
 
@@ -90,7 +97,7 @@ LernProjekt_Mitarbeiter/
 SQL/Create/create_db_advanced.sql   
 
 ✨ Enthält:
-  ├── Alle Tabellen
+  ├── Alle Tabellen inkl. neuer Ort-ID
   ├── Indizes
   ├── Trigger
   └── Views
@@ -101,90 +108,54 @@ SQL/Create/create_db_advanced.sql
 -- Stammdaten-Skript ausführen:
 SQL/Insert/insert_StammDaten.sql    
 
-📚 Enthält und wird erweitert um:
-  ├── PLZ(DE),Bundesländer(DE),Länder(Weltweit)-Verzeichnis
+📚 Enthält:
+  ├── PLZ(DE), Bundesländer(DE), Länder(Weltweit)
   └── Weitere Stammdaten (kontinuierliche Erweiterung)
 ```
 
 #### 3️⃣ Testdaten einfügen (optional)
-
-##### Option A: Einzelner Testdatensatz
 ```sql
-SQL/Insert/insert_single_Mitarbeiter_bsp.sql
-
-📋 Fügt einen vollständigen Datensatz ein:
-  ├── Persönliche Daten
-  ├── Adresse
-  ├── Telefonnummer
-  └── Projektzuordnung
-```
-
-##### Option B: Multiple Testdatensätze
-```sql
+-- Multiple Testdatensätze:
 SQL/Insert/insert_multi_Mitarbeiter_bsp.sql
 
-📋 Fügt 10 komplette Datensätze ein:
+📋 Fügt Testdaten ein:
   ├── 10 Mitarbeiter
   ├── Zugehörige Adressen
   ├── 21 Telefonnummern
-  ├── 5 Beispielprojekte
-  └── Projektzuordnungen mit Stunden
+  └── 5 Beispielprojekte
 ```
 
 ---
 
 ## 💾 Datenbank
 
-### 📊 Entity Relationship Model
-(COMMING SOON) Das ER-Modell finden Sie in der Dokumentation unter `Dokumentation/ER-Modell.pdf`
-
 ### 🏗️ Datenbankdesign
-(COMMING SOON) 
+
 #### Tabellen
 | Tabelle | Beschreibung |
 |---------|--------------|
 | `Mitarbeiter` | 👤 Zentrale Mitarbeiterdaten mit Zeitstempel |
 | `Adressen` | 📍 Adressverwaltung |
-| `Ort` | 🏘️ PLZ-Stammdaten |
+| `Ort` | 🏘️ PLZ-Stammdaten mit ID |
 | `Bundesland` | 🏘️ Bundesländer-Stammdaten |
 | `Land` | 🏘️ Länder-Stammdaten |
 | `Phone` | 📱 Telefonnummern |
-| `Phone_Types` | 📋 Telefontypen (mobil, privat, geschäftlich) |
+| `Phone_Types` | 📋 Telefontypen |
 | `Geschlecht` | 👥 Geschlechter-Stammdaten |
 | `Projekte` | 📊 Projektverwaltung |
 | `MitarbeiterProjekte` | 🔗 Projekt-Mitarbeiter-Zuordnung |
 | `DataQualityLog` | 📈 Qualitätsprotokollierung |
 
 #### 🛡️ Besondere Merkmale
+- ✅ Neue ID_ORT als Primary Key
+- ✅ PLZ/Ort Validierung durch Composite Unique
 - ✅ Referenzielle Integrität durch Fremdschlüssel
 - 🔄 Cascading Updates/Deletes wo sinnvoll
 - ⏱️ Automatische Zeitstempelaktualisierung
 - 📊 Datenqualitätsprüfung durch Trigger
 - 🚀 Optimierte Indizes für häufige Abfragen
-- 👁️ Views für Datenqualitätsmonitoring
 
-### 🔨 Implementierung
-
-#### Funktionen
-
-1. **Zeitstempel-Management**
-   - Trigger für automatische Aktualisierung
-   - Nachverfolgung von Änderungen
-
-2. **Datenqualitätssicherung**
-   - Automatische Prüfungen
-   - Logging von Problemen
-   - Vollständigkeitsprüfungen
-
-3. **Monitoring Views**
-   - Übersicht fehlender Daten
-   - Qualitätsmetriken
-   - Adressvalidierung
-
-4. **Performance-Optimierung**
-   - Strategische Indizierung
-   - Optimierte Abfragen
-   - Effiziente Datenstrukturen
+[Weitere technische Details finden Sie in der TECHNICAL.md](./TECHNICAL.md)
 
 ---
 
@@ -192,6 +163,7 @@ SQL/Insert/insert_multi_Mitarbeiter_bsp.sql
 
 ### Automatische Prüfungen
 - Vollständigkeit der Adressdaten
+- PLZ-Validierung
 - Gültigkeit der Telefonnummern
 - Projektzuordnungen
 - Stammdatenreferenzen
@@ -203,63 +175,10 @@ SQL/Insert/insert_multi_Mitarbeiter_bsp.sql
 
 ---
 
-## 📊 Beispielabfragen (ungetestet!!!)
-
-### 1️⃣ Mitarbeiter mit Kontaktdaten
-```sql
-SELECT 
-    m.Vorname + ' ' + m.Nachname AS MitarbeiterName,
-    a.Strasse + ' ' + a.Hausnummer + ISNULL(' ' + a.Hausnummer_Zusatz, '') + ISNULL(' ' + a.Adresszusatz, '') AS Adresse,
-    o.PLZ + ' ' + o.Ort_Name + ' ' + b.Bundesland_Name + ' ' + l.Land_Name AS Ort,
-    p.Phone_Number,
-    pt.Type_Lang AS TelefonTyp
-FROM Mitarbeiter m
-LEFT JOIN Adressen a ON m.ID_ADRESSEN = a.ID_ADRESSEN
-LEFT JOIN Ort o ON a.PLZ = o.PLZ
-LEFT JOIN Bundesland b ON o.ID_BUNDESLAND = b.ID_BUNDESLAND
-LEFT JOIN Land l ON a.ID_LAND = l.ID_LAND
-LEFT JOIN Phone p ON m.ID_Mitarbeiter = p.ID_Mitarbeiter
-LEFT JOIN Phone_Types pt ON p.ID_Phone_Type = pt.ID_Phone_Type
-ORDER BY m.Nachname, m.Vorname;
-
-```
-
-### 2️⃣ Projektübersicht
-```sql
-SELECT 
-    p.Projekt_Name,
-    p.Projekt_Nummer,
-    COUNT(DISTINCT mp.ID_Mitarbeiter) AS AnzahlMitarbeiter,
-    SUM(mp.Projekt_Stunden) AS GesamtStunden
-FROM Projekte p
-LEFT JOIN MitarbeiterProjekte mp ON p.ID_Projekt = mp.ID_Projekt
-GROUP BY p.Projekt_Name, p.Projekt_Nummer
-ORDER BY p.Projekt_Nummer;
-```
-
-### 3️⃣ Qualitätsprüfung
-```sql
-
--- Qualitätsprüfung per Hand EXEC SP_InitialQualityCheck;
-
-SELECT 
-    m.Vorname + ' ' + m.Nachname AS MitarbeiterName,
-    dql.Problem,
-    dql.Datum,
-    COUNT(p.ID_PHONE) as AnzahlTelefonnummern
-FROM DataQualityLog dql
-JOIN Mitarbeiter m ON dql.MitarbeiterID = m.ID_Mitarbeiter
-LEFT JOIN Phone p ON m.ID_Mitarbeiter = p.ID_Mitarbeiter
-GROUP BY m.Vorname, m.Nachname, dql.Problem, dql.Datum
-ORDER BY dql.Datum DESC;
-```
-
----
-
 ## 🚀 Geplante Erweiterungen
 
 ### Kurzfristig
-- 🖥️ Entwicklung der GUI
+- 🖥️ Erweiterte PLZ-Validierung
 - 📊 Erweiterung der Berichtsoptionen
 - 📋 Integration zusätzlicher Datenfelder
 
@@ -272,20 +191,6 @@ ORDER BY dql.Datum DESC;
 - 🔄 API-Integration
 - 🔐 Erweiterte Sicherheitsfunktionen
 - 🌐 Multi-Mandanten-Fähigkeit
-
----
-
-## 💡 Code Schnipsel und Erklärungen
-```txt
-
-### IF OBJECT_ID('table_name', 'U') IS NOT NULL
-Hier sind die wichtigsten Typen, die du mit OBJECT_ID prüfen kannst:
-
-'U' steht für "User-defined Table", also eine vom Benutzer definierte Tabelle.
-'P' steht für eine "Stored Procedure".
-'V' steht für eine "View".
-'TR' steht für einen "Trigger".
-```
 
 ---
 
