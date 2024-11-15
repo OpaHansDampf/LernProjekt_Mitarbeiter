@@ -1,0 +1,10 @@
+C:\Users\nadja.reuther\Desktop\Programmierung\C#\ASP.NET\Mitarbeiterverwaltung\Mitarbeiterverwaltung\bin\Debug\Mitarbeiterverwaltung.exe.config
+C:\Users\nadja.reuther\Desktop\Programmierung\C#\ASP.NET\Mitarbeiterverwaltung\Mitarbeiterverwaltung\bin\Debug\Mitarbeiterverwaltung.exe
+C:\Users\nadja.reuther\Desktop\Programmierung\C#\ASP.NET\Mitarbeiterverwaltung\Mitarbeiterverwaltung\bin\Debug\Mitarbeiterverwaltung.pdb
+C:\Users\nadja.reuther\Desktop\Programmierung\C#\ASP.NET\Mitarbeiterverwaltung\Mitarbeiterverwaltung\obj\Debug\Mitarbeiterverwaltung.csproj.AssemblyReference.cache
+C:\Users\nadja.reuther\Desktop\Programmierung\C#\ASP.NET\Mitarbeiterverwaltung\Mitarbeiterverwaltung\obj\Debug\Mitarbeiterverwaltung.Properties.Resources.resources
+C:\Users\nadja.reuther\Desktop\Programmierung\C#\ASP.NET\Mitarbeiterverwaltung\Mitarbeiterverwaltung\obj\Debug\Mitarbeiterverwaltung.csproj.GenerateResource.cache
+C:\Users\nadja.reuther\Desktop\Programmierung\C#\ASP.NET\Mitarbeiterverwaltung\Mitarbeiterverwaltung\obj\Debug\Mitarbeiterverwaltung.csproj.CoreCompileInputs.cache
+C:\Users\nadja.reuther\Desktop\Programmierung\C#\ASP.NET\Mitarbeiterverwaltung\Mitarbeiterverwaltung\obj\Debug\Mitarbeiterverwaltung.exe
+C:\Users\nadja.reuther\Desktop\Programmierung\C#\ASP.NET\Mitarbeiterverwaltung\Mitarbeiterverwaltung\obj\Debug\Mitarbeiterverwaltung.pdb
+C:\Users\nadja.reuther\Desktop\Programmierung\C#\ASP.NET\Mitarbeiterverwaltung\Mitarbeiterverwaltung\obj\Debug\Mitarbeiterverwaltung.MainScreen.resources
