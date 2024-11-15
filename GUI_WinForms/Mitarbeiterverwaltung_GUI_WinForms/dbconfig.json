@@ -1,0 +1,10 @@
+﻿{
+  "DatabaseSettings": {
+    "Server": "JJ-Terarium",
+    "Database": "MitarbeiterDB",
+    "Username": "",
+    "Password": "",
+    "IntegratedSecurity": true,
+    "TrustServerCertificate": true
+  }
+}
