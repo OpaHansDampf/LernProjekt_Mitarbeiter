@@ -1,0 +1,10 @@
+﻿{
+  "DatabaseSettings": {
+    "Server": "NB2401\\SQLEXPRESS",
+    "Database": "MitarbeiterDB",
+    "Username": "",
+    "Password": "",
+    "IntegratedSecurity": true,
+    "TrustServerCertificate": true
+  }
+}

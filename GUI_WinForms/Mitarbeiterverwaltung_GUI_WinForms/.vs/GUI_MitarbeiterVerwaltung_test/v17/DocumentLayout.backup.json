@@ -1,0 +1,91 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\_Projekte\\GUI_WinForms\\GUI_MitarbeiterVerwaltung_test\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E5648194-2A83-41B4-899A-528798020898}|GUI_MitarbeiterVerwaltung_test.csproj|e:\\_projekte\\gui_winforms\\gui_mitarbeiterverwaltung_test\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E5648194-2A83-41B4-899A-528798020898}|GUI_MitarbeiterVerwaltung_test.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5648194-2A83-41B4-899A-528798020898}|GUI_MitarbeiterVerwaltung_test.csproj|e:\\_projekte\\gui_winforms\\gui_mitarbeiterverwaltung_test\\mainscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E5648194-2A83-41B4-899A-528798020898}|GUI_MitarbeiterVerwaltung_test.csproj|solutionrelative:mainscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5648194-2A83-41B4-899A-528798020898}|GUI_MitarbeiterVerwaltung_test.csproj|e:\\_projekte\\gui_winforms\\gui_mitarbeiterverwaltung_test\\mainscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{E5648194-2A83-41B4-899A-528798020898}|GUI_MitarbeiterVerwaltung_test.csproj|solutionrelative:mainscreen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5648194-2A83-41B4-899A-528798020898}|GUI_MitarbeiterVerwaltung_test.csproj|e:\\_projekte\\gui_winforms\\gui_mitarbeiterverwaltung_test\\globaldb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E5648194-2A83-41B4-899A-528798020898}|GUI_MitarbeiterVerwaltung_test.csproj|solutionrelative:globaldb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "E:\\_Projekte\\GUI_WinForms\\GUI_MitarbeiterVerwaltung_test\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "E:\\_Projekte\\GUI_WinForms\\GUI_MitarbeiterVerwaltung_test\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAYwBcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-15T20:28:11.499Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "GlobalDb.cs",
+              "DocumentMoniker": "E:\\_Projekte\\GUI_WinForms\\GUI_MitarbeiterVerwaltung_test\\GlobalDb.cs",
+              "RelativeDocumentMoniker": "GlobalDb.cs",
+              "ToolTip": "E:\\_Projekte\\GUI_WinForms\\GUI_MitarbeiterVerwaltung_test\\GlobalDb.cs",
+              "RelativeToolTip": "GlobalDb.cs",
+              "ViewState": "AgIAAGYAAAAAAAAAAAAAAIMAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-15T19:50:50.926Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MainScreen.cs [Entwurf]",
+              "DocumentMoniker": "E:\\_Projekte\\GUI_WinForms\\GUI_MitarbeiterVerwaltung_test\\MainScreen.cs",
+              "RelativeDocumentMoniker": "MainScreen.cs",
+              "ToolTip": "E:\\_Projekte\\GUI_WinForms\\GUI_MitarbeiterVerwaltung_test\\MainScreen.cs [Entwurf]",
+              "RelativeToolTip": "MainScreen.cs [Entwurf]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-15T14:19:33.397Z",
+              "EditorCaption": " [Entwurf]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainScreen.cs",
+              "DocumentMoniker": "E:\\_Projekte\\GUI_WinForms\\GUI_MitarbeiterVerwaltung_test\\MainScreen.cs",
+              "RelativeDocumentMoniker": "MainScreen.cs",
+              "ToolTip": "E:\\_Projekte\\GUI_WinForms\\GUI_MitarbeiterVerwaltung_test\\MainScreen.cs",
+              "RelativeToolTip": "MainScreen.cs",
+              "ViewState": "AgIAANIAAAAAAAAAAAAYwP8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-15T13:58:23.806Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
