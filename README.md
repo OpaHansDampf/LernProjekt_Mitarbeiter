@@ -175,7 +175,7 @@ SQL/Insert/insert_multi_Mitarbeiter_bsp.sql
 
 ---
 
-## 🚀 Geplante Erweiterungen
+## 🚀 Geplante/Angedachte Erweiterungen
 
 ### Kurzfristig
 - 🖥️ Erweiterte PLZ-Validierung
