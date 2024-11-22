@@ -1,3 +1,4 @@
 {
-    "dotnet.preferCSharpExtension": true
+    "dotnet.preferCSharpExtension": true,
+    "dotnet.defaultSolution": "GUI/GUI_WinForms/Mitarbeiterverwaltung_GUI_WinForms/GUI_MitarbeiterVerwaltung_test.sln"
 }
